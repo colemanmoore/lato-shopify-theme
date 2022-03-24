@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="{{ 'section-about-us-banner.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'section-about-us-banner.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="about-us-banner">
+    <div class="about-us-icon">
+        <img 
+            {{ section.settings.icon | image_url }} {{ section.settings.icon.width }}w"
+            loading="lazy"
+            src="{{ section.settings.icon | image_url: width: 75 }}"
+            alt="{{ section.settings.icon.alt | escape }}"
+            width="75"
+            height="75"
+        />
+    </div>
+    <h2 class="about-us-header">{{ section.settings.heading }}</h2>
+    <div class="about-us-body">
+        <p>{{ section.settings.body }}</p>
+    </div>
+    <div class="about-us-cta">
+        <a class="button button--secondary" href="{{ section.settings.cta_destination }}" >
+            {{ section.settings.cta_text }}
+        </a>
+    </div>
+    
+</div>
+
+{% schema %}
+  {
+    "name": "t:sections.about-us-banner.name",
+    "settings": [
+      { "id": "icon",
+        "type": "image_picker",
+        "label": "t:sections.about-us-banner.settings.icon.label"
+      },
+      {
+        "id": "heading",
+        "type": "text",
+        "label": "t:sections.about-us-banner.settings.heading.label",
+        "default": "Just add fresh air"
+      },
+      {
+        "id": "body",
+        "type": "text",
+        "label": "t:sections.about-us-banner.settings.body.label",
+        "default": "add your text here"
+      },
+      {
+        "id": "cta_destination",
+        "type": "page",
+        "label": "t:sections.about-us-banner.settings.cta_destination.label"
+      },
+      {
+        "id": "cta_text",
+        "type": "text",
+        "label": "t:sections.about-us-banner.settings.cta_text.label"
+      }
+    ],
+    "presets": [
+      {
+        "name": "About Us Banner",
+        "category": "Custom"
+      }
+    ]
+  }
+{% endschema %}

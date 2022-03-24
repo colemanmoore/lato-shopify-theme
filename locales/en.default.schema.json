@@ -2305,6 +2305,26 @@
         }
       }
     },
+    "about-us-banner": {
+      "name": "About Us banner",
+      "settings": {
+        "heading": {
+          "label": "Heading"
+        },
+        "body": {
+          "label": "Text"
+        },
+        "icon": {
+          "label": "Brand icon"
+        },
+        "cta_destination": {
+          "label": "Page to link to"
+        },
+        "cta_text": {
+          "label": "Link text"
+        }
+      }
+    },
     "rich-text": {
       "name": "Rich text",
       "settings": {

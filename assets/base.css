@@ -2213,6 +2213,12 @@ input[type='checkbox'] {
   .header {
     padding-top: 2rem;
     padding-bottom: 2rem;
+
+    grid-template-areas: 'menu heading icons';
+    grid-template-columns: 2fr 1fr 2fr;
+
+    /* display: flex;
+    justify-content: space-evenly; */
   }
 
   .header--has-menu:not(.header--middle-left) {
@@ -2271,12 +2277,12 @@ input[type='checkbox'] {
 }
 
 .header__heading-link:hover .h2 {
-  /* color: rgb(var(--color-foreground)); */
+  color: rgb(var(--color-base-background-1));
 }
 
 .header__heading-link .h2 {
   line-height: 1;
-  /* color: rgba(var(--color-foreground), 0.75); */
+  color: rgb(var(--color-base-background-1));
 }
 
 .header__heading-logo, .header__heading-logo-hamburger {
@@ -2298,11 +2304,11 @@ input[type='checkbox'] {
 
   .header__heading,
   .header__heading-link {
-    justify-self: start;
+    justify-self: center;
+    text-align: center;
   }
 
-  .header--top-center .header__heading-link,
-  .header--top-center .header__heading {
+  .header__heading-link, .header__heading {
     justify-self: center;
     text-align: center;
   }
@@ -2310,9 +2316,10 @@ input[type='checkbox'] {
 
 /* Header icons */
 .header__icons {
-  display: flex;
   grid-area: icons;
-  justify-self: end;
+  display: flex;
+  justify-content: space-evenly;
+  /* justify-self: end; */
 }
 
 .header__icon:not(.header__icon--summary),
@@ -2326,7 +2333,7 @@ input[type='checkbox'] {
   color: currentColor;
 }
 
-.header__icon span {
+.header__icon span, .header__icon a {
   height: 100%;
 }
 
@@ -2380,8 +2387,8 @@ menu-drawer + .header__search {
 }
 
 .header > .header__search {
-  grid-area: left-icon;
-  justify-self: start;
+  /* grid-area: left-icon;
+  justify-self: start; */
 }
 
 .header:not(.header--has-menu) * > .header__search {
@@ -2544,8 +2551,8 @@ details[open] > .header__icon--menu .icon-hamburger {
 /* Header menu */
 .header__inline-menu {
   margin-left: -1.2rem;
-  grid-area: navigation;
   display: none;
+  grid-area: menu;
 }
 
 .header__heading-hamburger, .header__heading-logo-hamburger {
@@ -2553,29 +2560,26 @@ details[open] > .header__icon--menu .icon-hamburger {
     text-align: center;
 }
 
-.header--top-center .header__inline-menu,
-.header--top-center .header__heading-link {
+.header__inline-menu, .header__heading-link {
   margin-left: 0;
 }
 
 @media screen and (min-width: 990px) {
   .header__inline-menu {
-    width: 100%;
-    display: block;
+    display: flex;
   }
 
   .header__heading-hamburger, .header__heading-logo-hamburger {
     display: none;
   }
 
-  .header--top-center .header__inline-menu {
-    justify-self: center;
+  .header__inline-menu {
+    /* justify-self: center; */
   }
 
-  .header--top-center .header__inline-menu > .list-menu--inline {
-    width: 100%;
+  .header__inline-menu > .list-menu--inline {
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
   }
 
