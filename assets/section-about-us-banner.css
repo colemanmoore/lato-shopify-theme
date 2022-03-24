@@ -1,11 +1,18 @@
 .about-us-banner {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
+    padding: 2em;
 }
 
 .about-us-banner > * {
-    margin: 3rem 0;
+    margin: 1.5rem 0;
     text-align: center;
+}
+
+@media screen and (min-width: 990px) {
+    .about-us-banner > * {
+        margin: 3rem 0;
+    }
 }
 
 .about-us-icon {
