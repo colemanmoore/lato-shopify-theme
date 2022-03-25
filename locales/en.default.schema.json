@@ -1044,6 +1044,9 @@
         "adapt_height_first_image": {
           "label": "Adapt section height to first image size",
           "info": "Overwrites image banner height setting when checked."
+        },
+        "has_email_input": {
+          "label": "Include input for email"
         }
       },
       "blocks": {

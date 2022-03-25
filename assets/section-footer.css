@@ -118,6 +118,7 @@
 }
 
 .footer-block--newsletter {
+  flex-grow: 200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -178,6 +179,7 @@
 @media screen and (min-width: 750px) {
   .footer-block__newsletter:not(:only-child) {
     text-align: left;
+    max-width: 40%
   }
 
   .footer-block__newsletter:not(:only-child) .footer__newsletter {
