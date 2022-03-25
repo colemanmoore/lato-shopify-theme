@@ -780,7 +780,7 @@
       "name": "Footer",
       "blocks": {
         "link_list": {
-          "name": "Menu",
+          "name": "Info/Links",
           "settings": {
             "heading": {
               "label": "Heading",
@@ -793,7 +793,7 @@
           }
         },
         "text": {
-          "name": "Text",
+          "name": "Contact Us Text",
           "settings": {
             "heading": {
               "label": "Heading"
@@ -827,7 +827,10 @@
           "label": "Show email signup"
         },
         "newsletter_heading": {
-          "label": "Heading"
+          "label": "Newsletter heading"
+        },
+        "newsletter_text": {
+          "label": "Newsletter text"
         },
         "header__1": {
           "content": "Email Signup",

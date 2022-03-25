@@ -48,9 +48,10 @@
       }
     },
     "about_us_banner": {
-      "type": "about-us-banner"
+      "type": "about-us-banner",
+      "settings": {
+      }
     },
-    "collection_list": {},
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -75,7 +76,6 @@
   "order": [
     "image_banner",
     "about_us_banner",
-    "collection_list",
     "featured_collection"
   ]
 }
