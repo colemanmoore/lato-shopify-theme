@@ -129,7 +129,7 @@
         "type": "footer",
         "blocks": {
           "footer-0": {
-            "type": "text",
+            "type": "contact_us",
             "settings": {
               "heading": "Contact Us",
               "subtext": "<p>For all customer service and<br\/>general inquires, please contact<br\/> <a href=\"mailto:hello@lato.life\" target=\"_blank\" title=\"mailto:hello@lato.life\">hello@lato.life<\/a><\/p>"

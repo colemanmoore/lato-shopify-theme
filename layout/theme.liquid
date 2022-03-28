@@ -45,14 +45,37 @@
       {{ body_font_bold_italic | font_face: font_display: 'swap' }}
       {{ settings.type_header_font | font_face: font_display: 'swap' }}
 
-      :root {
-        --font-body-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-        --font-body-style: {{ settings.type_body_font.style }};
-        --font-body-weight: {{ settings.type_body_font.weight }};
+      @font-face {
+        font-family: "AcuminCondensed";
+        src: url({{ "AcuminVariableConcept.otf" | asset_url }});
+        font-weight: 600;
+        font-variation-settings: 'wdth' 50;
+      }
 
-        --font-heading-family: {{ settings.type_header_font.family }}, {{ settings.type_header_font.fallback_families }};
-        --font-heading-style: {{ settings.type_header_font.style }};
-        --font-heading-weight: {{ settings.type_header_font.weight }};
+      @font-face {
+        font-family: "CodeSaverRegular";
+        src: url({{ "CodeSaver-Regular.otf" | asset_url }});
+        font-weight: 800;
+      }
+
+      @font-face {
+        font-family: "NeuzeitGroteskRegular";
+        src: url({{ "Neuzeit Grotesk W01 Regular.otf" | asset_url }});
+      }
+
+      @font-face {
+        font-family: "NeuzeitBook";
+        src: url({{ "NeuzeitSBook.ttf" | asset_url }});
+      }
+
+      :root {
+        --font-body-family: NeuzeitBook, {{ settings.type_body_font.fallback_families }};
+        --font-body-style: regular;
+        --font-body-weight: 200;
+
+        --font-heading-family: AcuminCondensed, {{ settings.type_header_font.fallback_families }};
+
+        --font-nav-family: CodeSaverRegular, {{ settings.type_body_font.fallback_families }};
 
         --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
         --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
