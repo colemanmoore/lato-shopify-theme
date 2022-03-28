@@ -884,6 +884,15 @@ summary::-webkit-details-marker {
   flex-wrap: wrap;
 }
 
+.title-wrapper-sideways-left {
+  /* transform-origin: top right;
+  transform: rotate(270deg) translateY(-100px) translateX(-20px); */
+  writing-mode: sideways-lr;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
 .title--primary {
   margin: 4rem 0;
 }

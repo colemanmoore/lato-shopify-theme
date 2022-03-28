@@ -54,6 +54,9 @@
 .blog__posts .article-card .card__information {
   padding-left: 2rem;
   padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .article-card__info {
@@ -139,4 +142,12 @@
       margin-bottom: 7rem;
     }
   }
+}
+
+.article-card .full-unstyled-link {
+  font-family: var(--font-nav-family);
+}
+
+.article-card .full-unstyled-link:hover {
+  text-decoration: none;
 }

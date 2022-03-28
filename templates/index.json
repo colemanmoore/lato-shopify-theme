@@ -128,6 +128,16 @@
     },
     "shop_all": {
       "type": "collection-list"
+    },
+    "hike_guides": {
+      "type": "featured-blog",
+      "settings": {
+        "post_limit": 3,
+        "heading": "Hike Guides",
+        "padding_bottom": 60,
+        "padding_top": 80,
+        "blog": "news"
+      }
     }
   },
   "order": [
@@ -136,6 +146,7 @@
     "top_collections",
     "featured_collection",
     "shop_all",
-    "image_banner_subscribe"
+    "image_banner_subscribe",
+    "hike_guides"
   ]
 }

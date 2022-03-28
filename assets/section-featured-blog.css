@@ -86,3 +86,13 @@
   }
 }
 
+.blog > * {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.blog .blog__title {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 4.5em;
+}
