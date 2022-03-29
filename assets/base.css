@@ -2208,9 +2208,10 @@ input[type='checkbox'] {
 }
 
 .header {
+  position:relative;
   display: grid;
-  grid-template-areas: 'left-icon heading icons';
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas: 'left-icon heading';
+  grid-template-columns: 1fr;
   align-items: center;
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -2222,44 +2223,32 @@ input[type='checkbox'] {
     text-decoration-line: none;
 }
 
+.header__left-side, .header__right-side {
+  display: none;
+}
+
 @media screen and (min-width: 990px) {
   .header {
     padding-top: 2rem;
     padding-bottom: 2rem;
 
-    grid-template-areas: 'menu heading icons';
-    grid-template-columns: 2fr 1fr 2fr;
-
-    /* display: flex;
-    justify-content: space-evenly; */
+    display: flex;
+    grid-template-areas: 'left-side heading right-side';
+    grid-template-columns: 40% 1fr 40%;
   }
 
-  .header--has-menu:not(.header--middle-left) {
-    /* padding-bottom: 0; */
+  .header__left-side {
+    display: flex;
+    grid-area: left-side;
+    justify-content: space-evenly;
+    align-items: center;
   }
 
-  .header--top-left,
-  .header--middle-left:not(.header--has-menu) {
-    grid-template-areas:
-      'heading icons'
-      'navigation navigation';
-    grid-template-columns: 1fr auto;
-  }
-
-  .header--middle-left {
-    grid-template-areas: 'heading navigation icons';
-    grid-template-columns: auto auto 1fr;
-    column-gap: 2rem;
-  }
-
-  .header--top-center {
-    grid-template-areas:
-      'left-icon heading icons'
-      'navigation navigation navigation';
-  }
-
-  .header:not(.header--middle-left) .header__inline-menu {
-    /* margin-top: 1.05rem; */
+  .header__right-side {
+    display: flex;
+    grid-area: right-side;
+    justify-content: space-evenly;
+    align-items: center;
   }
 }
 
@@ -2279,7 +2268,7 @@ input[type='checkbox'] {
 .header__heading,
 .header__heading-link {
   grid-area: heading;
-  justify-self: center;
+  /* justify-self: center; */
 }
 
 .header__heading-link {
@@ -2368,7 +2357,7 @@ input[type='checkbox'] {
 
 .header__icon,
 .header__icon--cart .icon {
-  height: 4.4rem;
+  /* height: 4.4rem; */
   width: 4.4rem;
 }
 
@@ -2377,13 +2366,17 @@ input[type='checkbox'] {
   margin-right: -1.2rem;
 }
 
+.menu-drawer__menu.list-menu li {
+  color: rgb(var(--color-foreground));
+}
+
 @media screen and (max-width: 989px) {
   menu-drawer ~ .header__icons .header__icon--account {
     display: none;
   }
 }
 
-.header__icon--menu[aria-expanded="true"]::before {
+/* .header__icon--menu[aria-expanded="true"]::before {
   content: "";
   top: 100%;
   left: 0;
@@ -2392,7 +2385,7 @@ input[type='checkbox'] {
   display: block;
   position: absolute;
   background: rgba(var(--color-foreground), 0.5);
-}
+} */
 
 /* Search */
 menu-drawer + .header__search {
@@ -2564,8 +2557,10 @@ details[open] > .header__icon--menu .icon-hamburger {
 /* Header menu */
 .header__inline-menu {
   margin-left: -1.2rem;
-  display: none;
-  grid-area: menu;
+}
+
+.header__inline-menu > .list-menu--inline {
+  display: flex;
 }
 
 .header__heading-hamburger, .header__heading-logo-hamburger {
@@ -2580,20 +2575,17 @@ details[open] > .header__icon--menu .icon-hamburger {
 @media screen and (min-width: 990px) {
   .header__inline-menu {
     display: flex;
+    width: 100%;
+  }
+
+  .header__inline-menu > .list-menu--inline {
+    display: grid;
+    grid-template-areas: 'left-side heading right-side';
+    grid-template-columns: 3fr 1fr 3fr;
   }
 
   .header__heading-hamburger, .header__heading-logo-hamburger {
     display: none;
-  }
-
-  .header__inline-menu {
-    /* justify-self: center; */
-  }
-
-  .header__inline-menu > .list-menu--inline {
-    display: flex;
-    /* justify-content: space-around; */
-    align-items: center;
   }
 
   .header--middle-left .header__inline-menu {
@@ -2608,11 +2600,13 @@ details[open] > .header__icon--menu .icon-hamburger {
 .header__menu-item {
   padding: 1.2rem;
   text-decoration: none;
+  text-decoration-color: transparent;
+  text-decoration-line: none;
   color: currentColor;
 }
 
 .header__menu-item:hover {
-  color: rgb(var(--color-foreground));
+  color: currentColor;
 }
 
 .header__menu-item span {

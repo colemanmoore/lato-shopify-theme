@@ -241,6 +241,7 @@
   align-items: center;
   justify-content: center;
   z-index: 2;
+  margin-top: 10em;
 }
 
 @media screen and (min-width: 750px) {
@@ -359,8 +360,8 @@
 
 .banner__box > * + .banner__text {
   margin-top: 1.5rem;
-  font-size: 3.5rem;
-  line-height: 5rem;
+  font-size: 2.5rem;
+  line-height: 3rem;
 }
 
 @media screen and (min-width: 750px) {
@@ -400,16 +401,12 @@
 .banner__heading {
   margin-bottom: 0;
   text-transform: uppercase;
-  font-size: 7rem;
+  font-size: 6rem;
   line-height: 7rem;
 }
 
-.banner__box .banner__heading + * {
-  margin-top: 4rem;
-}
-
 .banner__buttons {
-  margin-top: 4rem;
+  margin-top: 3rem;
   display: inline-flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -439,11 +436,3 @@
   }
 }
 
-.banner__box > * + .banner__buttons {
-  margin-top: 4rem;
-}
-
-.banner__nav-compensation {
-  display: block;
-  height: 60px;
-}
