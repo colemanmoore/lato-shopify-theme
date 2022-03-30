@@ -128,14 +128,14 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "footer-0": {
+          "contact-us": {
             "type": "contact_us",
             "settings": {
               "heading": "Contact Us",
               "subtext": "<p>For all customer service and<br\/>general inquires, please contact<br\/> <a href=\"mailto:hello@lato.life\" target=\"_blank\" title=\"mailto:hello@lato.life\">hello@lato.life<\/a><\/p>"
             }
           },
-          "footer-1": {
+          "info-links": {
             "type": "link_list",
             "settings": {
               "heading": "Info",
@@ -144,8 +144,8 @@
           }
         },
         "block_order": [
-          "footer-0",
-          "footer-1"
+          "contact-us",
+          "info-links"
         ],
         "settings": {
           "color_scheme": "background-1",
@@ -304,34 +304,10 @@
         },
         "footer": {
           "type": "footer",
-          "blocks": {
-            "footer-0": {
-              "type": "link_list",
-              "settings": {
-                "heading": "Quick links",
-                "menu": "footer"
-              }
-            },
-            "footer-1": {
-              "type": "link_list",
-              "settings": {
-                "heading": "Info",
-                "menu": "footer"
-              }
-            }
-          },
-          "block_order": [
-            "footer-0",
-            "footer-1"
-          ],
           "settings": {
-            "color_scheme": "background-1",
             "newsletter_enable": true,
-            "newsletter_heading": "Subscribe to our emails",
-            "show_social": true,
             "enable_country_selector": false,
             "enable_language_selector": false,
-            "payment_enable": true,
             "margin_top": 48,
             "padding_top": 36,
             "padding_bottom": 36
