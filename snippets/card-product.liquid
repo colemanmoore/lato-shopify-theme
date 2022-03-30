@@ -133,6 +133,25 @@
               </p>
             {%- endif -%}
 
+            {%- for option in card_product.options_with_values -%}
+              {%- if option.name == 'Color' and card_product.variants[forloop.index0].metafields.color.values -%}
+                <fieldset class="js product-form__input">
+                  <legend class="form__label">{{ option.name }}</legend>
+                  {%- for value in option.values -%}
+                    <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                          name="{{ option.name }}"
+                          value="{{ value | escape }}"
+                          form="{{ product_form_id }}"
+                          {% if option.selected_value == value %}checked{% endif %}
+                    >
+                    <label for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}" style="background-color: {{card_product.variants[forloop.index0].metafields.color.values}}">
+                      &nbsp;
+                    </label>
+                  {%- endfor -%}
+                </fieldset>
+              {%- endif -%}
+            {%- endfor -%}
+
             {% render 'price', product: card_product, price_class: '' %}
           </div>
         </div>

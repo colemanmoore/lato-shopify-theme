@@ -1,24 +1,12 @@
-.featured-product .product__media-list {
-  width: 100%;
-  margin: 0;
-  padding-bottom: 0;
-}
 
 .featured-product .global-media-settings:after {
   z-index: 0;
 }
 
-.featured-product .product__modal-opener {
-  margin-bottom: var(--media-shadow-vertical-offset);
-}
-
-.featured-product .product__media-item {
-  padding-left: 0;
-  width: 100%;
-}
-
-.featured-product .product__media-item:not(:first-child) {
-  display: none;
+.featured-product .image__banner {
+  position: absolute;
+  z-index: -10;
+  padding: 5em;
 }
 
 .background-secondary .featured-product {

@@ -93,7 +93,7 @@
     <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
   </symbol>
 </svg>
-<div class="header-wrapper {% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+<div class="header-wrapper {% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}{% if request.page_type != 'index'%} header-wrapper__dark-text{% endif %}">
   <header class="header page-width{% if section.settings.menu != blank %} header--has-menu{% endif %}">
     {%- if section.settings.menu != blank -%}
       <header-drawer data-breakpoint="tablet">
@@ -359,14 +359,21 @@
           {%- endif -%}
               <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
                 {%- if section.settings.logo_light != blank -%}
-                  {%- assign image_size = section.settings.logo_width | append: 'x' -%}
-                  <img srcset="{{ section.settings.logo_light | img_url: image_size }} 1x, {{ section.settings.logo_light | img_url: image_size, scale: 2 }} 2x"
-                    src="{{ section.settings.logo_light | img_url: image_size }}"
+                  {%- liquid 
+                      assign image_size = section.settings.logo_width | append: 'x' 
+                      if request.page_type == 'index'
+                        assign image_version = section.settings.logo_light
+                      else
+                        assign image_version = section.settings.logo_dark
+                      endif
+                  -%}
+                  <img srcset="{{ image_version | img_url: image_size }} 1x, {{ image_version | img_url: image_size, scale: 2 }} 2x"
+                    src="{{ image_version | img_url: image_size }}"
                     loading="lazy"
                     class="header__heading-logo"
-                    width="{{ section.settings.logo_light.width }}"
-                    height="{{ section.settings.logo_light.height }}"
-                    alt="{{ section.settings.logo_light.alt | default: shop.name | escape }}"
+                    width="{{ image_version.width }}"
+                    height="{{ image_version.height }}"
+                    alt="{{ image_version.alt | default: shop.name | escape }}"
                   >
                 {%- else -%}
                   <span class="h2">{{ shop.name }}</span>
@@ -634,34 +641,6 @@
   "class": "section-header",
   "settings": [
     {
-      "type": "select",
-      "id": "color_scheme",
-      "options": [
-        {
-          "value": "accent-1",
-          "label": "t:sections.header.settings.color_scheme.options__1.label"
-        },
-        {
-          "value": "accent-2",
-          "label": "t:sections.header.settings.color_scheme.options__2.label"
-        },
-        {
-          "value": "background-1",
-          "label": "t:sections.header.settings.color_scheme.options__3.label"
-        },
-        {
-          "value": "background-2",
-          "label": "t:sections.header.settings.color_scheme.options__4.label"
-        },
-        {
-          "value": "inverse",
-          "label": "t:sections.header.settings.color_scheme.options__5.label"
-        }
-      ],
-      "default": "background-1",
-      "label": "t:sections.header.settings.color_scheme.label"
-    },
-    {
       "type": "image_picker",
       "id": "logo_light",
       "label": "t:sections.header.settings.logo_light.label"
@@ -675,7 +654,7 @@
       "type": "range",
       "id": "logo_width",
       "min": 50,
-      "max": 250,
+      "max": 120,
       "step": 10,
       "default": 100,
       "unit": "t:sections.header.settings.logo_width.unit",

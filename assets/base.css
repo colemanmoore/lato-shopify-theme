@@ -210,6 +210,10 @@ html.no-js .no-js-hidden {
   display: none !important;
 }
 
+.content-for-layout {
+  margin-top: var(--header-height);
+}
+
 .page-width {
   max-width: var(--page-width);
   margin: 0 auto;
@@ -2207,6 +2211,10 @@ input[type='checkbox'] {
   border-bottom: 0.1rem solid rgb(var(--color-base-background-1));
 }
 
+.header-wrapper__dark-text.header-wrapper--border-bottom {
+  border-bottom: 0.1rem solid rgb(var(--color-base-accent-1));
+}
+
 .header {
   position:relative;
   display: grid;
@@ -2217,6 +2225,11 @@ input[type='checkbox'] {
   padding-bottom: 1rem;
   color: rgb(var(--color-base-background-1));
   text-transform: uppercase;
+  height: var(--header-height);
+}
+
+.header-wrapper__dark-text .header {
+  color: rgb(var(--color-base-accent-1));
 }
 
 .header .link {
@@ -2231,7 +2244,6 @@ input[type='checkbox'] {
   .header {
     padding-top: 2rem;
     padding-bottom: 2rem;
-
     display: flex;
     grid-template-areas: 'left-side heading right-side';
     grid-template-columns: 40% 1fr 40%;

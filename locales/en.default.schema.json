@@ -304,6 +304,9 @@
     "layout": {
       "name": "Layout",
       "settings": {
+        "header_height": {
+          "label": "Header height"
+        },
         "page_width": {
           "label": "Page width"
         },

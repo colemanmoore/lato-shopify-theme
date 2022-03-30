@@ -138,6 +138,16 @@
     "settings": [
       {
         "type": "range",
+        "id": "header_height",
+        "min": 64,
+        "max": 120,
+        "step": 4,
+        "default": 92,
+        "unit": "px",
+        "label": "t:settings_schema.layout.settings.header_height.label"
+      },
+      {
+        "type": "range",
         "id": "page_width",
         "min": 1000,
         "max": 1600,
@@ -1140,7 +1150,7 @@
         "type": "checkbox",
         "id": "currency_code_enabled",
         "label": "t:settings_schema.currency_format.settings.currency_code_enabled.label",
-        "default": true
+        "default": false
       }
     ]
   }

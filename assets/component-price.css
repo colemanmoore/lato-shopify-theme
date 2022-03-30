@@ -20,6 +20,7 @@
 
 .price .price-item {
   margin: 0 1rem 0 0;
+  font-family: var(--font-nav-family);
 }
 
 .price__regular .price-item--regular {
