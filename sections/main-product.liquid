@@ -22,14 +22,11 @@
   }
 {%- endstyle -%}
 
-<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- liquid 
+  assign current_variant = product.selected_or_first_available_variant
+-%}
 
-{%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
-{%- if first_3d_model -%}
-  {{ 'component-product-model.css' | asset_url | stylesheet_tag }}
-  <link id="ModelViewerStyle" rel="stylesheet" href="https://cdn.shopify.com/shopifycloud/model-viewer-ui/assets/v1.0/model-viewer-ui.css" media="print" onload="this.media='all'">
-  <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'component-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
-{%- endif -%}
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 <section class="page-width section-{{ section.id }}-padding">
   <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.gallery_layout }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
@@ -169,6 +166,7 @@
         {%- endif -%}
       </media-gallery>
     </div>
+
     <div class="product__info-wrapper {% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}">
       <div id="ProductInfo-{{ section.id }}" class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}">
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
@@ -299,40 +297,63 @@
               </details>
             </share-button>
             <script src="{{ 'share.js' | asset_url }}" defer="defer"></script>
+
           {%- when 'variant_picker' -%}
             {%- unless product.has_only_default_variant -%}
               {%- if block.settings.picker_type == 'button' -%}
                 <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                   {%- for option in product.options_with_values -%}
-                    {% if option.name == 'Color' and product.variants[forloop.index0].metafields.color.values %}
+                    {% liquid
+                      assign option_index = option.position | minus: 1
+                      if option.name == 'Color' and product.variants[forloop.index0].metafields.color.values
+                        assign color_values = option.values
+                      elsif option.name == 'Size' 
+                        assign size_values = option.values
+                      endif
+                    %}
+                    {% comment %} <div>{{option_index}}-{{option.name}}::{{option.values}}    </div> {% endcomment %}
+
+                    {% if color_values %}
                       <fieldset class="js product-form__input product-color__form">
                         <legend class="visually-hidden form__label">{{ option.name }}</legend>
-                        {%- for value in option.values -%}
-                          <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                        {%- for value in color_values -%}
+                          {% assign value_index = forloop.index0 %}
+                          <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ value_index }}"
                                 name="{{ option.name }}"
                                 value="{{ value | escape }}"
                                 form="{{ product_form_id }}"
                                 {% if option.selected_value == value %}checked{% endif %}
                           >
-                          <label for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}" style="background-color: {{product.variants[forloop.index0].metafields.color.values}}">
-                            &nbsp;
+                          <label for="{{ section.id }}-{{ option.position }}-{{ value_index }}">
+                            <span class="product-color__swatch" 
+                              style="background-color: {{product.variants[forloop.index0].metafields.color.values}}">
+                              &nbsp;
+                            </span>
                           </label>
                         {%- endfor -%}
+                        <div id="product-color-display-{{section.id}}" class="product-form__selection product-form__selected_color">
+                          {{ current_variant.options[option_index] }}
+                        </div>
                       </fieldset>
-                    {%- elsif option.name == 'Size' -%}
+
+                    {%- elsif size_values -%}
                       <fieldset class="js product-form__input product-size__form">
                         <legend class="visually-hidden form__label">{{ option.name }}</legend>
-                        {%- for value in option.values -%}
-                          <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                        {%- for value in size_values -%}
+                          {% assign value_index = forloop.index0 %}
+                          <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ value_index }}"
                                 name="{{ option.name }}"
                                 value="{{ value | escape }}"
                                 form="{{ product_form_id }}"
                                 {% if option.selected_value == value %}checked{% endif %}
                           >
-                          <label for="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                          <label for="{{ section.id }}-{{ option.position }}-{{ value_index }}">
                             {{ value }}
                           </label>
                         {%- endfor -%}
+                        <div id="product-size-display-{{section.id}}" class="product-form__selection product-form__selected_size">
+                          {{ current_variant.options[option_index] }}
+                        </div>
                       </fieldset>
                     {%- endif -%}
                   {%- endfor -%}
@@ -340,6 +361,7 @@
                     {{ product.variants | json }}
                   </script>
                 </variant-radios>
+
               {%- else -%}
                 <variant-selects class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
                   {%- for option in product.options_with_values -%}

@@ -149,9 +149,8 @@
 
 /* Form Elements */
 .product-form__input {
-  flex: 0 0 1;
   padding: 0;
-  margin: 0 0 1.2rem 0;
+  margin: 2rem 0 5rem 0;
   max-width: 37rem;
   min-width: fit-content;
   border: none;
@@ -202,8 +201,6 @@ fieldset.product-form__input .form__label {
   display: inline-block;
   margin: 0.7rem 0.5rem 0.2rem 0;
   padding: 1rem 1rem;
-  width: 4rem;
-  height: 4rem;
   font-size: 1.4rem;
   letter-spacing: 0.1rem;
   line-height: 2rem;
@@ -225,16 +222,37 @@ fieldset.product-form__input .form__label {
   box-shadow: var(--variant-pills-shadow-horizontal-offset) var(--variant-pills-shadow-vertical-offset) var(--variant-pills-shadow-blur-radius) rgba(var(--color-shadow), var(--variant-pills-shadow-opacity));
 }
 
-.product-form__input input[type='radio'] + label:hover {
+.product-size__form input[type='radio'] + label {
+  width: 4rem;
+  height: 4rem;
+}
+
+.product-size__form input[type='radio'] + label:hover {
   border-color: rgb(var(--color-foreground));
 }
 
-.product-form__input input[type='radio']:checked + label {
+.product-size__form input[type='radio']:checked + label {
   border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
 }
 
+.product-color__form input[type='radio'] + label {
+  padding: 4px;
+}
+
+.product-color__form input[type='radio']:checked + label {
+  border: var(--variant-pills-border-width) solid rgba(var(--color-foreground), var(--variant-pills-border-opacity));
+}
+
+.product-color__swatch {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--variant-pills-radius);
+}
+
 @media screen and (forced-colors: active) {
-  .product-form__input input[type=radio]:checked + label {
+  .product-size__form input[type=radio]:checked + label,
+  .product-color__form input[type=radio]:checked + label {
     text-decoration: underline;
   }
 }
@@ -249,6 +267,13 @@ fieldset.product-form__input .form__label {
 .product-form__input input[type='radio']:focus-visible + label {
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
     0 0 0 0.5rem rgba(var(--color-foreground), 0.55);
+}
+
+.product-form__selection {
+  margin-top: 0.75em;
+  font-family: var(--font-nav-family);
+  text-transform: uppercase;
+  font-size: 2rem;
 }
 
 /* Fallback */
@@ -306,7 +331,8 @@ fieldset.product-form__input .form__label {
 }
 
 .product__info-container > * + * {
-  margin: 1.5rem 0;
+  margin: 2.5rem 0;
+  border-bottom: 1px solid;
 }
 
 .product__info-container .product-form,

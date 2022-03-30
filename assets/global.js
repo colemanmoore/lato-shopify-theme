@@ -839,6 +839,11 @@ class VariantSelects extends HTMLElement {
 
         if (price) price.classList.remove('visibility-hidden');
         this.toggleAddButton(!this.currentVariant.available, window.variantStrings.soldOut);
+
+        const colorDisplay = document.getElementById(`product-color-display-${this.dataset.section}`);
+        const sizeDisplay = document.getElementById(`product-size-display-${this.dataset.section}`);
+        colorDisplay.innerHTML = this.currentVariant.option2;
+        sizeDisplay.innerHTML = this.currentVariant.option1;
       });
   }
 
