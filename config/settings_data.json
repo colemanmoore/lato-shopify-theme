@@ -119,6 +119,7 @@
         "type": "header",
         "settings": {
           "logo_light": "shopify:\/\/shop_images\/Lato_White.png",
+          "logo_dark": "shopify:\/\/shop_images\/Asset_1.png",
           "logo_width": 90,
           "menu": "main-menu",
           "show_line_separator": true,
