@@ -1,3 +1,24 @@
+.product_detail_section-back {
+  margin: 2em 0;
+}
+
+.product_detail_section-back a {
+  font-family: var(--font-heading-2-family);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.product_detail_section-back a:hover {
+  text-decoration: underline;
+}
+
+.product_detail_section-back a::before {
+  display: inline-block;
+  content: url('/assets/Lato_Button_Arrow.svg');
+  width: 3em;
+  margin-right: 1em;
+}
+
 .product {
   margin: 0;
 }

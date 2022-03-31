@@ -47,9 +47,9 @@
 
       @font-face {
         font-family: "AcuminCondensed";
-        src: url({{ "AcuminVariableConcept.otf" | asset_url }});
+        src: url({{ "AcuminProExtraCond-Semibold.otf" | asset_url }});
         font-weight: 600;
-        font-variation-settings: 'wdth' 50;
+        font-style: normal;
       }
 
       @font-face {
@@ -70,11 +70,11 @@
 
       @font-face {
         font-family: "NeuzeitGroteskCondensed";
-        src: url({{ "Neuzeit Grotesk Cond W01 Black.otf" | asset_url }});
+        src: url({{ "NeuzeitGro W03 Bold.otf" | asset_url }});
       }
 
       :root {
-        --font-body-family: NeuzeitBook, {{ settings.type_body_font.fallback_families }};
+        --font-body-family: NeuzeitGroteskRegular, {{ settings.type_body_font.fallback_families }};
         --font-body-style: regular;
         --font-body-weight: 200;
         --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};

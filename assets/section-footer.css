@@ -13,17 +13,11 @@
 
 @media screen and (max-width: 749px) {
   .footer .grid {
-    display: block;
   }
 
   .footer-block.grid__item {
     padding: 0;
-    margin: 4rem 0;
-    width: 100%;
-  }
-
-  .footer-block.grid__item:first-child {
-    margin-top: 0;
+    margin: 0;
   }
 
   .footer__content-top {
@@ -134,6 +128,18 @@
   flex: 1 1 100%;
 }
 
+.footer-block.footer-block--menu .link {
+  font-family: var(--font-body-family);
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.footer-block--menu .list-menu__item--link {
+  text-decoration: none;
+  padding-bottom: 0.1rem;
+  padding-top: 0.1rem;
+}
+
 @media screen and (max-width: 749px) {
   .footer-block.footer-block--menu:only-child {
     text-align: left;
@@ -151,6 +157,9 @@
   margin-bottom: 2rem;
   margin-top: 0;
   font-size: calc(var(--font-heading-scale) * 1.6rem);
+  font-family: var(--font-nav-family);
+  text-transform: uppercase;
+  text-align: left;
 }
 
 @media screen and (min-width: 990px) {
@@ -392,6 +401,27 @@ noscript .localization-selector.link {
 
 .footer-block__details-content {
   margin-bottom: 4rem;
+  text-align: left;
+}
+
+.footer__blocks-wrapper.grid {
+  flex-wrap: nowrap;
+}
+
+.footer-block__details-content.link.list-menu__item 
+.footer-block__details-content p,
+.footer-block__details-content,
+.footer-block__details-content {
+  font-size: 2rem;
+  color: var(--color-base-accent-1);
+}
+
+@media screen and (max-width: 749px) {
+  .footer-block__details-content .link.list-menu__item
+  .footer-block__details-content p,
+  .footer-block__details-content {
+    font-size: 1.6rem;
+  }
 }
 
 @media screen and (min-width: 750px) {
@@ -415,7 +445,7 @@ noscript .localization-selector.link {
 
 .footer-block__details-content .list-menu__item--link,
 .copyright__content a {
-  color: rgba(var(--color-foreground), 0.75);
+  color: var(--color-foreground);
 }
 
 .footer-block__details-content .list-menu__item--active {
@@ -438,15 +468,13 @@ noscript .localization-selector.link {
 
 @media screen and (max-width: 989px) {
   .footer-block__details-content .list-menu__item--link {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    padding-top: 0.5rem;
   }
 }
 
 @media screen and (min-width: 750px) {
   .footer-block__details-content .list-menu__item--link {
     display: inline-block;
-    font-size: 1.4rem;
   }
 
   .footer-block__details-content > :first-child .list-menu__item--link {
