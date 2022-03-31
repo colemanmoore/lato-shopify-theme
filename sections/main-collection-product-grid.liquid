@@ -80,6 +80,37 @@
   </div>
 </div>
 
+{% javascript %}
+class ProductCardColorSelector extends HTMLElement {
+
+  constructor() {
+    super();
+    this.addEventListener('change', this.onColorChange);
+  }
+
+  onColorChange() {
+    const inputs = Array.from(this.querySelectorAll('input'));
+    const inputChecked = inputs.find(input => input.checked) || inputs[0];
+    const colorValue = inputChecked.value;
+    const {variantOptionIndex} = inputChecked.dataset;
+    const {cardId} = this.dataset;
+    this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+    
+    this.currentVariant = this.variantData.find(variant => {
+      return variant.options[variantOptionIndex] === colorValue;
+    })
+
+    if (this.currentVariant) {
+      document.getElementById(cardId).querySelectorAll('.product-link-modify-variant').forEach(link => {
+        const old = link.getAttribute('href')
+        link.setAttribute('href', `${old}?variant=${this.currentVariant.id}`);
+      });
+    }
+  }
+}
+customElements.define('product-card-color-selector', ProductCardColorSelector);
+{% endjavascript %}
+
 {% schema %}
 {
   "name": "t:sections.main-collection-product-grid.name",

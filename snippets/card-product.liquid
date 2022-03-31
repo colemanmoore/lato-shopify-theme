@@ -27,8 +27,10 @@
     if ratio == 0 or ratio == nil
       assign ratio = 1
     endif
+
+    assign prod_variant = card_product.selected_or_first_available_variant
   -%}
-  <div class="card-wrapper underline-links-hover">
+  <div class="card-wrapper underline-links-hover" id="{{ card_product.id }}">
     <div class="card
       card--{{ settings.card_style }}
       {% if card_product.featured_media %} card--media{% else %} card--text{% endif %}
@@ -80,9 +82,12 @@
           </div>
         {%- endif -%}
         <div class="card__content">
+          <h3 class="card__heading" style="color:transparent">
+            <a href="{{ card_product.url }}" class="full-unstyled-link product-link-modify-variant">{{ card_product.title | escape }}</a>
+          </h3>
           <div class="card__information">
             <h3 class="card__heading">
-              <a href="{{ card_product.url }}" class="full-unstyled-link">
+              <a href="{{ card_product.url }}" class="full-unstyled-link product-link-modify-variant">
                 {{ card_product.title | escape }}
               </a>
             </h3>
@@ -98,11 +103,41 @@
       </div>
       <div class="card__content">
         <div class="card__information">
-          <h3 class="card__heading{% if card_product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
-            <a href="{{ card_product.url }}" class="full-unstyled-link">
+          <product-card-color-selector class="no-js-hidden product-color__form" data-card-id="{{ card_product.id }}">
+            <form id="{{ section.id }}-{{ card_product.id }}">
+              {%- for option in card_product.options_with_values -%}
+                {%- if option.name == 'Color' and card_product.variants[forloop.index0].metafields.color.values -%}
+                  {% liquid
+                    assign opt_idx = option.position | minus: 1
+                  %}
+                  {%- for value in option.values -%}
+                    <input type="radio" id="{{ section.id }}-{{ card_product.id }}-{{ option.position }}-{{ forloop.index0 }}"
+                          name="{{ option.name }}"
+                          value="{{ value | escape }}"
+                          form="{{ section.id }}-{{ card_product.id }}"
+                          data-variant-option-index="{{ opt_idx }}"
+                          {% if option.selected_value == value %}checked{% endif %}
+                    >
+                    <label for="{{ section.id }}-{{ card_product.id }}-{{ option.position }}-{{ forloop.index0 }}">
+                      <span class="product-color__swatch" 
+                        style="background-color: {{card_product.variants[forloop.index0].metafields.color.values}}">
+                        &nbsp;
+                      </span>
+                    </label>
+                  {%- endfor -%}
+                {%- endif -%}
+              {%- endfor -%}
+            </form>
+            <script type="application/json">
+              {{ card_product.variants | json }}
+            </script>
+          </product-card-color-selector>
+
+          <h2 class="card__heading">
               {{ card_product.title | escape }}
-            </a>
-          </h3>
+          </h2>
+          {% render 'price', product: card_product, price_class: '' %}
+          
           <div class="card-information">
             {%- if show_vendor -%}
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
@@ -132,28 +167,13 @@
                 <span class="visually-hidden">{{ card_product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
               </p>
             {%- endif -%}
-
-            {%- for option in card_product.options_with_values -%}
-              {%- if option.name == 'Color' and card_product.variants[forloop.index0].metafields.color.values -%}
-                <fieldset class="js product-form__input">
-                  <legend class="form__label">{{ option.name }}</legend>
-                  {%- for value in option.values -%}
-                    <input type="radio" id="{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}"
-                          name="{{ option.name }}"
-                          value="{{ value | escape }}"
-                          form="{{ product_form_id }}"
-                          {% if option.selected_value == value %}checked{% endif %}
-                    >
-                    <label for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}" style="background-color: {{card_product.variants[forloop.index0].metafields.color.values}}">
-                      &nbsp;
-                    </label>
-                  {%- endfor -%}
-                </fieldset>
-              {%- endif -%}
-            {%- endfor -%}
-
-            {% render 'price', product: card_product, price_class: '' %}
+            <div class="product-card_cta">
+              <h3 class="product-card__cta-heading">
+                <a href="{{ card_product.url }}" class="full-unstyled-link product-link-modify-variant">Shop</a>
+              </h3>
+            </div>
           </div>
+          
         </div>
         <div class="card__badge {{ settings.badge_position }}">
           {%- if card_product.available == false -%}
