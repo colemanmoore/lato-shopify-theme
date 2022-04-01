@@ -1439,6 +1439,20 @@ button.shopify-payment-button__button--unbranded {
   display: flex;
 }
 
+.button .icon-arrow {
+  fill: currentColor;
+  display: flex;
+  margin-left: 1rem;
+  width: 2rem;
+}
+
+.button .icon-arrow-back {
+  fill: currentColor;
+  display: flex;
+  margin-left: 1rem;
+  width: 2rem;
+}
+
 /* Button - social share */
 
 .share-button {
@@ -1933,7 +1947,7 @@ input[type='checkbox'] {
 .quantity {
   color: rgba(var(--color-foreground));
   position: relative;
-  width: calc(14rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
+  width: calc(11rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
   display: flex;
   border-radius: var(--inputs-radius);
   min-height: calc((var(--inputs-border-width) * 2) + 4.5rem);
@@ -1949,8 +1963,6 @@ input[type='checkbox'] {
   left: var(--inputs-border-width);
   border: 0.1rem solid transparent;
   border-radius: var(--inputs-radius);
-  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
-  transition: box-shadow var(--duration-short) ease;
   z-index: 1;
 }
 
@@ -2905,4 +2917,10 @@ details-disclosure > details {
       padding-bottom: var(--grid-desktop-vertical-spacing);
     }
   }
+}
+
+.collection .grid.product-grid {
+  /* display: grid;
+  grid-template-columns: repeat(3, minmax(33.33%, auto));
+   */
 }

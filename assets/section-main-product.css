@@ -12,11 +12,11 @@
   text-decoration: underline;
 }
 
-.product_detail_section-back a::before {
-  display: inline-block;
-  content: url('/assets/Lato_Button_Arrow.svg');
-  width: 3em;
-  margin-right: 1em;
+.product_detail_section-back .icon-arrow-back {
+  display: inline-flex;
+  fill: currentColor;
+  width: 2em;
+  margin-right: 0.5em;
 }
 
 .product {
@@ -171,7 +171,7 @@
 /* Form Elements */
 .product-form__input {
   padding: 0;
-  margin: 2rem 0 5rem 0;
+  margin: 2rem 0;
   max-width: 37rem;
   min-width: fit-content;
   border: none;
@@ -298,6 +298,10 @@ fieldset.product-form__input .form__label {
   font-size: 2rem;
 }
 
+.product-form__selected_color {
+  margin-right: 0.75em;
+}
+
 /* Fallback */
 .product-form__input input[type='radio'].focused + label,
 .no-js .shopify-payment-button__button [role="button"]:focus + label {
@@ -315,7 +319,12 @@ fieldset.product-form__input .form__label {
 }
 
 .product-form__submit {
-  margin-bottom: 1rem;
+  padding: 0;
+  font-family: var(--font-heading-2-family);
+  text-transform: none;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  letter-spacing: normal;
 }
 
 .no-js .product-form__submit.button--secondary {
@@ -353,14 +362,28 @@ fieldset.product-form__input .form__label {
 }
 
 .product__info-container > * + * {
-  margin: 2.5rem 0;
-  border-bottom: 1px solid;
+  margin: 1.5rem 0;
+  /* border-bottom: 1px solid; */
+}
+
+@media screen and (min-width: 990px) {
+  .product__info-container > * + * {
+    border-bottom: none;
+  }
 }
 
 .product__info-container .product-form,
 .product__info-container .product__description {
-  margin: 2.5rem 0;
+  margin: 1rem 0;
   font-size: 2rem;
+}
+
+.product__info-container .product-form {
+  border-bottom: none;
+}
+
+.product-form-wrapper, .product-form-wrapper .product-form {
+  margin-bottom: 0;
 }
 
 .product__text {
@@ -488,6 +511,10 @@ a.product__text {
 .product--no-media .product-form__input--dropdown {
   flex-direction: column;
   max-width: 100%;
+}
+
+.product-form__quantity {
+  margin: 0 0;
 }
 
 .product-form__quantity .form__label {

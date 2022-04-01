@@ -19,6 +19,39 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .collection_grid_hero-mobile {
+    display: flex;
+    min-width: 100%;
+    height: calc({{ collection.image.height }}px / 2);
+    overflow: hidden;
+    background-image: url("{{ collection.image | image_url: width: 700 }}");
+    background-position: center;
+    background-size: cover;
+    margin-bottom: 3em;
+  }
+
+  .collection_grid_hero-desktop {
+    display: none;
+  }
+
+  @media screen and (min-width: 990px) {
+
+    .grid__item.collection_grid_hero-mobile {
+      display: none;
+    }
+
+    .grid__item.collection_grid_hero-desktop {
+      display: flex;
+      min-width: 100%;
+      height: {{ collection.image.height }}px;
+      overflow: hidden;
+      background-image: url("{{ collection.image | image_url: width: 700 }}");
+      background-position: center;
+      background-size: cover;
+      margin-bottom: 3em;
+    }
+  }
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding">
@@ -47,16 +80,21 @@
         <div class="collection page-width">
           <div class="loading-overlay gradient"></div>
   
-          <ul id="product-grid" data-id="{{ section.id }}" class="
-            grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
-            {% if section.settings.columns_desktop == 1 %} grid--full-width{% else %}
-              grid--{{ section.settings.columns_desktop }}-col-desktop
-            {% endif %}">
+          <ul id="product-grid" data-id="{{ section.id }}" 
+            class="grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--3-col-desktop">
             {%- for product in collection.products -%}
               {% assign lazy_load = false %}
               {%- if forloop.index > 2 -%}
                 {%- assign lazy_load = true -%}
               {%- endif -%}
+
+              {%- if forloop.index == 3 %}
+                <li class="grid__item collection_grid_hero-mobile"></li>
+              {% endif %}
+
+              {%- if forloop.index == 4 %}
+                <li class="grid__item collection_grid_hero-desktop"></li>
+              {% endif %}
 
               <li class="grid__item">
                 {% render 'card-product',
