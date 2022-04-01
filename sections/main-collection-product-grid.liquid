@@ -23,9 +23,9 @@
   .collection_grid_hero-mobile {
     display: flex;
     min-width: 100%;
-    height: calc({{ collection.image.height }}px / 2);
+    height: calc({{ collection.featured_image.height }}px / 2);
     overflow: hidden;
-    background-image: url("{{ collection.image | image_url: width: 700 }}");
+    background-image: url("{{ collection.featured_image | image_url: width: 700 }}");
     background-position: center;
     background-size: cover;
     margin-bottom: 3em;
@@ -44,9 +44,9 @@
     .grid__item.collection_grid_hero-desktop {
       display: flex;
       min-width: 100%;
-      height: {{ collection.image.height }}px;
+      height: {{ collection.featured_image.height }}px;
       overflow: hidden;
-      background-image: url("{{ collection.image | image_url: width: 700 }}");
+      background-image: url("{{ collection.featured_image | image_url: width: 700 }}");
       background-position: center;
       background-size: cover;
       margin-bottom: 3em;
