@@ -1,9 +1,9 @@
 .collection-list {
   margin-top: 0;
   margin-bottom: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
 }
 
 .collection-list-title {
@@ -24,6 +24,30 @@
   .section-collection-list .collection-list:not(.slider) {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+}
+
+.collection-list__item {
+  list-style: none;
+  flex-basis: calc(var(--page-width));
+  padding: 1.5em;
+  overflow: hidden;
+}
+
+.collection-list__item img {
+  object-fit: cover;
+}
+
+@media screen and (min-width: 990px) {
+
+  .collection-list {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 3em;
+  }
+  
+  .collection-list__item {
+    flex-basis: calc((var(--page-width) - 5rem) / 2);
+    height: calc((var(--page-width) - 5rem) / 2);
   }
 }
 
