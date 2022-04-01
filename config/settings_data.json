@@ -121,7 +121,7 @@
           "logo_light": "shopify:\/\/shop_images\/Lato_White.png",
           "logo_dark": "shopify:\/\/shop_images\/Asset_1.png",
           "logo_width": 90,
-          "menu": "main-menu",
+          "menu": "main",
           "show_line_separator": true,
           "margin_bottom": 0
         }
@@ -140,7 +140,7 @@
             "type": "link_list",
             "settings": {
               "heading": "Info",
-              "menu": "footer"
+              "menu": "footer-1"
             }
           }
         },
@@ -150,7 +150,7 @@
         ],
         "settings": {
           "newsletter_enable": true,
-          "newsletter_heading": "Subscribe to our emails",
+          "newsletter_heading": "Sign Up",
           "newsletter_text": "Stay up to date on products, inspiration, and the little stuff that sparks joy",
           "enable_country_selector": false,
           "enable_language_selector": false,
