@@ -89,8 +89,10 @@
       "type": "featured-product",
       "settings": {
         "product": "the-santa-barbara-set",
+        "link_label": "Shop Now",
+        "use_light_text": true,
         "banner_image": "shopify:\/\/shop_images\/Screen_Shot_2021-09-16_at_4.24.57_PM_53e7ccc9-b30a-45ab-b761-09273fb8f47b.png",
-        "hide_variants": false
+        "banner_marquee": "Just Landed"
       }
     },
     "shop_all": {
