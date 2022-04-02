@@ -8,84 +8,81 @@
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
 
 {%- assign product = section.settings.product -%}
+{%- liquid
+  if section.settings.use_light_text 
+    assign text_color = '#FFFFFF'
+  else
+    assign text_color = '#000000'
+  endif
+-%}
+
+{%- style -%}
+.product__info-wrapper {
+  background-image: url("{{ product.featured_image | image_url }}");
+  background-position: center;
+  background-size: cover;
+}
+
+#ProductInfo-{{ section.id }} h2, 
+#ProductInfo-{{ section.id }} .button, 
+#ProductInfo-{{ section.id }} span {
+  color: {{ text_color }}
+}
+{%- endstyle -%}
 
 <section class="gradient">
-  <div class="page-width">
-    
-    <div class="featured-product product grid grid--1-col gradient isolate">
-      
-      <div class="image__banner media">
-        <img
-          srcset="{%- if section.settings.banner_image.width >= 375 -%}{{ section.settings.banner_image | image_url: width: 375 }} 375w,{%- endif -%}
-            {%- if section.settings.banner_image.width >= 550 -%}{{ section.settings.banner_image | image_url: width: 550 }} 550w,{%- endif -%}
-            {%- if section.settings.banner_image.width >= 750 -%}{{ section.settings.banner_image | image_url: width: 750 }} 750w,{%- endif -%}
-            {%- if section.settings.banner_image.width >= 1100 -%}{{ section.settings.banner_image | image_url: width: 1100 }} 1100w,{%- endif -%}
-            {%- if section.settings.banner_image.width >= 1500 -%}{{ section.settings.banner_image | image_url: width: 1500 }} 1500w,{%- endif -%}
-            {%- if section.settings.banner_image.width >= 1780 -%}{{ section.settings.banner_image | image_url: width: 1780 }} 1780w,{%- endif -%}
-            {%- if section.settings.banner_image.width >= 2000 -%}{{ section.settings.banner_image | image_url: width: 2000 }} 2000w,{%- endif -%}
-            {%- if section.settings.banner_image.width >= 3000 -%}{{ section.settings.banner_image | image_url: width: 3000 }} 3000w,{%- endif -%}
-            {%- if section.settings.banner_image.width >= 3840 -%}{{ section.settings.banner_image | image_url: width: 3840 }} 3840w,{%- endif -%}
-            {{ section.settings.banner_image | image_url }} {{ section.settings.banner_image.width }}w"
-          sizes="100vw"
-          src="{{ section.settings.banner_image | image_url: width: 1500 }}"
-          loading="lazy"
-          alt="{{ section.settings.banner_image.alt | escape }}"
-          width="{{ section.settings.banner_image.width }}"
-          height="{{ section.settings.banner_image.width | divided_by: section.settings.banner_image.aspect_ratio }}"
-        />
-      </div>
+  <div class="featured-product product grid grid--1-col gradient isolate{% if section.settings.use_light_text %} featured-product_dark-text{% endif %}">
+    <div class="product__info-wrapper grid__item">
+      <div id="ProductInfo-{{ section.id }}">
+        {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
-      <div class="product__info-wrapper grid__item">
-        <div id="ProductInfo-{{ section.id }}" class="product__info-container">
-          {%- assign product_form_id = 'product-form-' | append: section.id -%}
+        <h2 class="product__title" {{ block.shopify_attributes }}>
+          {%- if product.title != blank -%}
+              {{ product.title | escape }}
+          {%- else -%}
+              {{ 'onboarding.product_title' | t }}
+          {%- endif -%}
+        </h2>
 
-          <h2 class="product__title {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
-            {%- if product.title != blank -%}
-                {{ product.title | escape }}
-            {%- else -%}
-                {{ 'onboarding.product_title' | t }}
-            {%- endif -%}
-          </h2>
+        {%- if section.settings.text != blank -%}
+          <p class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}" {{ block.shopify_attributes }}>
+            {{- block.settings.text -}}
+          </p>
+        {%- endif -%}
 
-          {%- for block in section.blocks -%}
-            {%- case block.type -%}
-            {%- when '@app' -%}
-              {% render block %}
-            {%- when 'text' -%}
-              <p class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}" {{ block.shopify_attributes }}>
-                {{- block.settings.text -}}
-              </p>
-            {%- when 'custom_liquid' -%}
-              {{ block.settings.custom_liquid }}
-            {%- when 'rating' -%}
-              {%- if product.metafields.reviews.rating.value != blank -%}
-                {% liquid
-                  assign rating_decimal = 0
-                  assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
-                  if decimal >= 0.3 and decimal <= 0.7
-                  assign rating_decimal = 0.5
-                elsif decimal > 0.7
-                  assign rating_decimal = 1
-                  endif
-                %}
-                <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
-                  <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
-                </div>
-                <p class="rating-text caption">
-                  <span aria-hidden="true">{{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}</span>
-                </p>
-                <p class="rating-count caption">
-                  <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
-                  <span class="visually-hidden">{{ product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
-                </p>
-              {%- endif -%}
-            {%- endcase -%}
-          {%- endfor -%}
-        <a{% if product == blank %} role="link" aria-disabled="true"{% else %} href="{{ product.url }}"{% endif %} class="link product__view-details animate-arrow">
-          {{ 'products.product.view_full_details' | t }}
-          {% render 'icon-arrow' %}
-        </a>
-        </div>
+        {%- if section.settings.rating -%}
+          {%- if product.metafields.reviews.rating.value != blank -%}
+            {% liquid
+              assign rating_decimal = 0
+              assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+              if decimal >= 0.3 and decimal <= 0.7
+              assign rating_decimal = 0.5
+            elsif decimal > 0.7
+              assign rating_decimal = 1
+              endif
+            %}
+            <div class="rating" role="img" aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}">
+              <span aria-hidden="true" class="rating-star color-icon-{{ settings.accent_icons }}" style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"></span>
+            </div>
+            <p class="rating-text caption">
+              <span aria-hidden="true">{{ product.metafields.reviews.rating.value }} / {{ product.metafields.reviews.rating.value.scale_max }}</span>
+            </p>
+            <p class="rating-count caption">
+              <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
+              <span class="visually-hidden">{{ product.metafields.reviews.rating_count }} {{ "accessibility.total_reviews" | t }}</span>
+            </p>
+          {%- endif -%}
+        {%- endif -%}
+
+        {%- if section.settings.link_label != blank -%}
+          <h3>
+            <a class="button button--secondary" href="{{ product.url }}">
+              {{ section.settings.link_label }}
+              {% render 'icon-arrow' %}
+            </a>
+          </h3>
+        {%- endif -%}
+                        
       </div>
     </div>
   </div>
@@ -166,160 +163,6 @@
   "name": "t:sections.featured-product.name",
   "tag": "section",
   "class": "section section-featured-product",
-  "blocks": [
-    {
-      "type": "@app"
-    },
-    {
-      "type": "text",
-      "name": "t:sections.featured-product.blocks.text.name",
-      "settings": [
-        {
-          "type": "text",
-          "id": "text",
-          "default": "Text block",
-          "label": "t:sections.featured-product.blocks.text.settings.text.label"
-        },
-        {
-          "type": "select",
-          "id": "text_style",
-          "options": [
-            {
-              "value": "body",
-              "label": "t:sections.featured-product.blocks.text.settings.text_style.options__1.label"
-            },
-            {
-              "value": "subtitle",
-              "label": "t:sections.featured-product.blocks.text.settings.text_style.options__2.label"
-            },
-            {
-              "value": "uppercase",
-              "label": "t:sections.featured-product.blocks.text.settings.text_style.options__3.label"
-            }
-          ],
-          "default": "body",
-          "label": "t:sections.featured-product.blocks.text.settings.text_style.label"
-        }
-      ]
-    },
-    {
-      "type": "title",
-      "name": "t:sections.featured-product.blocks.title.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "select",
-          "id": "heading_size",
-          "options": [
-            {
-              "value": "h2",
-              "label": "t:sections.all.heading_size.options__1.label"
-            },
-            {
-              "value": "h1",
-              "label": "t:sections.all.heading_size.options__2.label"
-            },
-            {
-              "value": "h0",
-              "label": "t:sections.all.heading_size.options__3.label"
-            }
-          ],
-          "default": "h1",
-          "label": "t:sections.all.heading_size.label"
-        }
-      ]
-    },
-    {
-      "type": "price",
-      "name": "t:sections.featured-product.blocks.price.name",
-      "limit": 1
-    },
-    {
-      "type": "quantity_selector",
-      "name": "t:sections.featured-product.blocks.quantity_selector.name",
-      "limit": 1
-    },
-    {
-      "type": "variant_picker",
-      "name": "t:sections.featured-product.blocks.variant_picker.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "select",
-          "id": "picker_type",
-          "options": [
-            {
-              "value": "dropdown",
-              "label": "t:sections.featured-product.blocks.variant_picker.settings.picker_type.options__1.label"
-            },
-            {
-              "value": "button",
-              "label": "t:sections.featured-product.blocks.variant_picker.settings.picker_type.options__2.label"
-            }
-          ],
-          "default": "button",
-          "label": "t:sections.featured-product.blocks.variant_picker.settings.picker_type.label"
-        }
-      ]
-    },
-    {
-      "type": "buy_buttons",
-      "name": "t:sections.featured-product.blocks.buy_buttons.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "show_dynamic_checkout",
-          "default": true,
-          "label": "t:sections.featured-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
-          "info": "t:sections.featured-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
-        }
-      ]
-    },
-    {
-      "type": "share",
-      "name": "t:sections.featured-product.blocks.share.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "share_label",
-          "label": "t:sections.featured-product.blocks.share.settings.text.label",
-          "default": "Share"
-        },
-        {
-          "type": "paragraph",
-          "content": "t:sections.featured-product.blocks.share.settings.featured_image_info.content"
-        },
-        {
-          "type": "paragraph",
-          "content": "t:sections.featured-product.blocks.share.settings.title_info.content"
-        }
-      ]
-    },
-    {
-      "type": "custom_liquid",
-      "name": "t:sections.featured-product.blocks.custom_liquid.name",
-      "settings": [
-        {
-          "type": "liquid",
-          "id": "custom_liquid",
-          "label": "t:sections.featured-product.blocks.custom_liquid.settings.custom_liquid.label"
-        }
-      ]
-    },
-    {
-      "type": "rating",
-      "name": "t:sections.featured-product.blocks.rating.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "paragraph",
-          "content": "t:sections.featured-product.blocks.rating.settings.paragraph.content"
-        }
-      ]
-    }
-  ],
   "settings": [
     {
       "type": "product",
@@ -327,59 +170,30 @@
       "label": "t:sections.featured-product.settings.product.label"
     },
     {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_light_text",
+      "label": "Use light text"
+    },
+    {
       "type": "image_picker",
       "id": "banner_image",
       "label": "Banner image"
     },
     {
-      "type": "header",
-      "content": "t:sections.featured-product.settings.header.content",
-      "info": "t:sections.featured-product.settings.header.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "hide_variants",
-      "default": false,
-      "label": "t:sections.main-product.settings.hide_variants.label"
+      "type": "text",
+      "id": "banner_marquee",
+      "label": "Banner marquee"
     }
   ],
   "presets": [
     {
-      "name": "t:sections.featured-product.presets.name",
-      "blocks": [
-        {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
-        {
-          "type": "title"
-        },
-        {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.metafields.descriptors.subtitle.value }}",
-            "text_style": "subtitle"
-          }
-        },
-        {
-          "type": "price"
-        },
-        {
-          "type": "variant_picker"
-        },
-        {
-          "type": "quantity_selector"
-        },
-        {
-          "type": "buy_buttons"
-        },
-        {
-          "type": "share"
-        }
-      ]
+      "name": "t:sections.featured-product.presets.name"
     }
   ]
 }
