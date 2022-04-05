@@ -6,6 +6,24 @@ function getFocusableElements(container) {
   );
 }
 
+function handleDetailsSummaryClick(event) {
+  
+  const isClosing = event.currentTarget.closest('details').hasAttribute('open');
+  
+  if (isClosing) {
+    event.currentTarget.setAttribute('aria-expanded', false);
+    
+  } else {
+    event.currentTarget.setAttribute('aria-expanded', true);
+    document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
+      if (summary.id && summary.id !== event.currentTarget.id && summary.parentElement.open) {
+        summary.setAttribute('aria-expanded', false);
+        summary.parentElement.removeAttribute('open');
+      }
+    });
+  }
+}
+
 document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
   summary.setAttribute('role', 'button');
   summary.setAttribute('aria-expanded', 'false');
@@ -14,9 +32,7 @@ document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
     summary.setAttribute('aria-controls', summary.nextElementSibling.id);
   }
 
-  summary.addEventListener('click', (event) => {
-    event.currentTarget.setAttribute('aria-expanded', !event.currentTarget.closest('details').hasAttribute('open'));
-  });
+  summary.addEventListener('click', handleDetailsSummaryClick);
 
   if (summary.closest('header-drawer')) return;
   summary.parentElement.addEventListener('keyup', onKeyUpEscape);
