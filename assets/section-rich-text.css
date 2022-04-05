@@ -88,6 +88,6 @@
 
 .rich-text__blocks h2.nav_font {
   font-family: var(--font-nav-family);
+  letter-spacing: var(--font-nav-letter-spacing);
   text-transform: uppercase;
-  letter-spacing: 0.25rem;
 }

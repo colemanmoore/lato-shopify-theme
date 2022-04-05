@@ -146,6 +146,7 @@
 
 .article-card .full-unstyled-link {
   font-family: var(--font-nav-family);
+  letter-spacing: var(--font-nav-letter-spacing);
 }
 
 .article-card .full-unstyled-link:hover {

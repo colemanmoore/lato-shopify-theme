@@ -369,6 +369,7 @@
 .product-card__cta-heading > * {
   text-transform: uppercase;
   font-family: var(--font-nav-family);
+  letter-spacing: var(--font-nav-letter-spacing);
   text-decoration-line: underline;
   text-underline-offset: 0.7rem;
   font-size: 1.5rem;

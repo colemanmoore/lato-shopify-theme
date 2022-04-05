@@ -600,7 +600,7 @@ h6:empty {
   color: rgb(var(--color-link));
   background-color: transparent;
   font-family: var(--font-nav-family);
-  letter-spacing: 0.25rem;
+  letter-spacing: var(--font-nav-letter-spacing);
 }
 
 .link--text {
@@ -1313,6 +1313,7 @@ button.shopify-payment-button__button--unbranded {
 
   text-transform: uppercase;
   font-family: var(--font-nav-family);
+  letter-spacing: var(--font-nav-letter-spacing);
   font-size: 2rem;
 }
 

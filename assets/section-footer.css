@@ -158,6 +158,7 @@
   margin-top: 0;
   font-size: calc(var(--font-heading-scale) * 1.6rem);
   font-family: var(--font-nav-family);
+  letter-spacing: var(--font-nav-letter-spacing);
   text-transform: uppercase;
   text-align: left;
 }
