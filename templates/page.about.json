@@ -1,6 +1,6 @@
 {
   "sections": {
-    "1649120281ca371321": {
+    "our-story-title": {
       "type": "page-title",
       "settings": {
         "text": "Our Story"
@@ -68,7 +68,7 @@
         "16491103179b264150-1": {
           "type": "text",
           "settings": {
-            "text": "<p>The name “Lato” [lah-toe] comes from the Polish word meaning summertime. It’s there and then that we first fell in love with spending time outdoors, hiking through vast forests, and truly enjoying what was in our own backyard. The excitement and curiosity that comes alive during the summer months is what inspired us to create Lato. And it’s what led us to recognizing that the most essential exploration you can do is to look within and learn to find joy in what’s around you.<br\/><\/p>"
+            "text": "<p>The name “Lato” [lah-toe] comes from the Polish word meaning summertime. It's there and then that we first fell in love with spending time outdoors, hiking through vast forests, and truly enjoying what was in our own backyard. The excitement and curiosity that comes alive during the summer months is what inspired us to create Lato. And it's what led us to recognizing that the most essential exploration you can do is to look within and learn to find joy in what's around you.<br\/><\/p>"
           }
         }
       },
@@ -94,7 +94,7 @@
         "1649123489739e6e33-1": {
           "type": "text",
           "settings": {
-            "text": "<p>We believe that everyone deserves to create their own relationship with the outdoors. For some, it’s about hiking adventurous fourteeners – and for the rest of us, it can be just as simple as finding a pocket of nature within a big city. No matter the type, any form of hiking makes us feel more grounded and in touch with the world around us. Our goal is to reflect the experiences of all types of womxn and develop products with all fresh air enthusiasts in mind.<br\/><\/p>"
+            "text": "<p>We believe that everyone deserves to create their own relationship with the outdoors. For some, it's about hiking adventurous fourteeners – and for the rest of us, it can be just as simple as finding a pocket of nature within a big city. No matter the type, any form of hiking makes us feel more grounded and in touch with the world around us. Our goal is to reflect the experiences of all types of womxn and develop products with all fresh air enthusiasts in mind.<br\/><\/p>"
           }
         }
       },
@@ -120,7 +120,7 @@
         "1649131234f7dbfca9-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Simpler, better, more beautiful products take a bit more time to create. We’re thoughtful in our approach to designing products that truly meet the needs of our customers and don’t promote a culture of excess. Less is more also means that we produce our products in limited quantities, in order to avoid overproduction and waste. If you already have a Lato product you love, we hope you enjoy it again and again and again.<br\/><\/p>"
+            "text": "<p>Simpler, better, more beautiful products take a bit more time to create. We're thoughtful in our approach to designing products that truly meet the needs of our customers and don't promote a culture of excess. Less is more also means that we produce our products in limited quantities, in order to avoid overproduction and waste. If you already have a Lato product you love, we hope you enjoy it again and again and again.<br\/><\/p>"
           }
         }
       },
@@ -146,7 +146,7 @@
         "164913128976ca7d45-1": {
           "type": "text",
           "settings": {
-            "text": "<p>We’re intentional with all of our choices, because we know that each positive choice has the ability to better the world around us. From the use of eco-friendly fabrics and dyes, to the materials we use to ship, we’re thoughtful about how our actions affect the planet. To give back to our planet and the people who take care of it, we’re currently donating 1% back to the conservation of local state parks. In the future, we hope to give back to other initiatives in the “backyards” we’re living in - local projects, volunteers, entrepreneurs.<br\/><\/p>"
+            "text": "<p>We're intentional with all of our choices, because we know that each positive choice has the ability to better the world around us. From the use of eco-friendly fabrics and dyes, to the materials we use to ship, we're thoughtful about how our actions affect the planet. To give back to our planet and the people who take care of it, we're currently donating 1% back to the conservation of local state parks. In the future, we hope to give back to other initiatives in the “backyards” we're living in - local projects, volunteers, entrepreneurs.<br\/><\/p>"
           }
         }
       },
@@ -200,7 +200,7 @@
         "1649132604659c93d1-1": {
           "type": "text",
           "settings": {
-            "text": "<p>It was May 2020, and I was on a day-trip to Santa Barbara with my childhood best friend. As we were hiking my new favorite trail -- Buena Vista (dots connecting?)-- a little light bulb went off in my head, “Why aren’t there any cute, sustainable hiking brands?” Eyeing my friend’s outfit first, and then my own, I saw that each of us was wearing black spandex and sports bras, warm from the sun, with nowhere to place our phones or car keys.<br\/><\/p>"
+            "text": "<p>It was May 2020, and I was on a day-trip to Santa Barbara with my childhood best friend. As we were hiking my new favorite trail -- Buena Vista (dots connecting?)-- a little light bulb went off in my head, “Why aren't there any cute, sustainable hiking brands?” Eyeing my friend's outfit first, and then my own, I saw that each of us was wearing black spandex and sports bras, warm from the sun, with nowhere to place our phones or car keys.<br\/><\/p>"
           }
         }
       },
@@ -218,7 +218,7 @@
         "16491327195c4c594c-1": {
           "type": "text",
           "settings": {
-            "text": "<p>This moment set me on a journey to find cute, quality, sustainable hiking clothes that I could wear from a hiking trail (or a neighborhood stroll, which I was doing a lot of during those summer 2020 days) to lunch with a friend. That search led me to a lot of (you guessed it!) black spandex pants with an occasional side pocket, or on the flip-side, 1980s-looking cargo shorts and old-school fly fish shirts (both of which I didn’t care to own, let alone have hanging in my closet).<br\/><\/p>"
+            "text": "<p>This moment set me on a journey to find cute, quality, sustainable hiking clothes that I could wear from a hiking trail (or a neighborhood stroll, which I was doing a lot of during those summer 2020 days) to lunch with a friend. That search led me to a lot of (you guessed it!) black spandex pants with an occasional side pocket, or on the flip-side, 1980s-looking cargo shorts and old-school fly fish shirts (both of which I didn't care to own, let alone have hanging in my closet).<br\/><\/p>"
           }
         }
       },
@@ -236,7 +236,7 @@
         "16491327921ee0ec25-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Fast forward to today, we’re releasing our first three products: a sports bra\/ top, shorts, and rethought fly fish shirt, all thoughtfully and sustainably made. I hope you’ll feel cute, comfortable, and proud to wear activewear that’s made specifically for hiking and support a brand that’s built with the intention to go outside, but look inside to find what you’re really looking for.<br\/><\/p>"
+            "text": "<p>Fast forward to today, we're releasing our first three products: a sports bra\/ top, shorts, and rethought fly fish shirt, all thoughtfully and sustainably made. I hope you'll feel cute, comfortable, and proud to wear activewear that's made specifically for hiking and support a brand that's built with the intention to go outside, but look inside to find what you're really looking for.<br\/><\/p>"
           }
         }
       },
@@ -254,7 +254,7 @@
         "16491328530d124e97-0": {
           "type": "heading",
           "settings": {
-            "heading": "- Anna",
+            "heading": "– Anna",
             "heading_style": "nav_font"
           }
         },
@@ -292,7 +292,7 @@
     }
   },
   "order": [
-    "1649120281ca371321",
+    "our-story-title",
     "top-banner",
     "1649109875376fae03",
     "1649110317fcd6409a",
