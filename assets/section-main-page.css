@@ -4,6 +4,12 @@
 
 .main-page-title {
   margin-bottom: 3rem;
+  font-family: var(--font-heading-family);
+}
+
+h1 {
+  font-family: var(--font-heading-2-family);
+  text-transform: capitalize;
 }
 
 @media screen and (min-width: 750px) {

@@ -1,65 +1,155 @@
 <link rel="stylesheet" href="{{ 'section-about-us-banner.css' | asset_url }}" media="print" onload="this.media='all'">
 <noscript>{{ 'section-about-us-banner.css' | asset_url | stylesheet_tag }}</noscript>
 
+{% style %}
+
+.about-us-header-sans-serif {
+  font-family: var(--font-heading-2-family);
+}
+
+.about-us-header-nav {
+  font-family: var(--font-nav-family);
+  text-transform: uppercase;
+}
+
+{% endstyle %}
+
 <div class="about-us-banner">
-    <div class="about-us-icon">
-        <img 
-            {{ section.settings.icon | image_url }} {{ section.settings.icon.width }}w"
-            loading="lazy"
-            src="{{ section.settings.icon | image_url: width: 75 }}"
-            alt="{{ section.settings.icon.alt | escape }}"
-            width="75"
-            height="75"
-        />
-    </div>
-    <h2 class="about-us-header">{{ section.settings.heading }}</h2>
-    <div class="about-us-body">
-        <p>{{ section.settings.body }}</p>
-    </div>
-    <div class="about-us-cta">
-        <a class="button button--secondary" href="{{ section.settings.cta_destination }}" >
-            {{ section.settings.cta_text }}
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+
+      {% when 'icon_row' %}
+        <div class="about-us-icon">
+            <img 
+                {{ block.settings.image | image_url }} {{ block.settings.image.width }}w"
+                loading="lazy"
+                src="{{ block.settings.image | image_url: width: 75 }}"
+                alt="{{ block.settings.image.alt | escape }}"
+                width="75"
+                height="75"
+            />
+        </div>
+
+      {% when 'banner_header' %}
+        <div class="about-us-header">
+          {%- if block.settings.style == 'sans_serif' %}
+            <h2 class="about-us-header-sans-serif">{{ block.settings.text }}</h4>
+          {%- else %}
+            <h2 class="about-us-header-nav">{{ block.settings.text }}</h4>
+          {%- endif %}
+        </div>
+
+      {% when 'body_text' %}
+        <div class="about-us-body">
+          <p>{{ block.settings.text }}</p>
+        </div>
+
+      {% when 'cta' %}
+        <div class="about-us-cta">
+          <a class="button button--secondary" href="{{ block.settings.cta_destination }}" >
+            {{ block.settings.cta_text }}
             {% render 'icon-arrow' %}
-        </a>
-    </div>
-    
+          </a>
+        </div>
+
+    {%- endcase -%}
+  {%- endfor -%}
 </div>
 
 {% schema %}
   {
     "name": "t:sections.about-us-banner.name",
-    "settings": [
-      { "id": "icon",
-        "type": "image_picker",
-        "label": "t:sections.about-us-banner.settings.icon.label"
+    "tag": "section",
+    "class": "section",
+    "blocks": [
+      {
+        "type": "icon_row",
+        "name": "Icon row",
+        "limit": 1,
+        "settings": [
+          { 
+            "id": "image",
+            "type": "image_picker",
+            "label": "t:sections.about-us-banner.settings.icon.label"
+          }
+        ]
       },
       {
-        "id": "heading",
-        "type": "text",
-        "label": "t:sections.about-us-banner.settings.heading.label",
-        "default": "Heading"
+        "type": "banner_header",
+        "name": "Header",
+        "limit": 1,
+        "settings": [
+          {
+            "id": "text",
+            "type": "text",
+            "label": "t:sections.about-us-banner.settings.heading.label"
+          },
+          {
+            "id": "style",
+            "type": "select",
+            "label": "Text style",
+            "options": [
+              {
+                "value": "sans_serif",
+                "label": "Sans serif style"
+              },
+              {
+                "value": "nav",
+                "label": "Nav style"
+              }
+            ]
+          }
+        ]
       },
       {
-        "id": "body",
-        "type": "text",
-        "label": "t:sections.about-us-banner.settings.body.label",
-        "default": "your text here"
+        "type": "body_text",
+        "name": "Body",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+          }
+        ]
       },
       {
-        "id": "cta_destination",
-        "type": "page",
-        "label": "t:sections.about-us-banner.settings.cta_destination.label"
-      },
-      {
-        "id": "cta_text",
-        "type": "text",
-        "label": "t:sections.about-us-banner.settings.cta_text.label"
+        "type": "cta",
+        "name": "Call to action",
+        "limit": 1,
+        "settings": [
+          {
+            "id": "cta_destination",
+            "type": "page",
+            "label": "t:sections.about-us-banner.settings.cta_destination.label"
+          },
+          {
+            "id": "cta_text",
+            "type": "text",
+            "label": "t:sections.about-us-banner.settings.cta_text.label"
+          }
+        ]
       }
     ],
+    "settings": [],
     "presets": [
       {
         "name": "About Us Banner",
-        "category": "Custom"
+        "category": "Custom",
+        "blocks": [
+          {
+            "type": "icon_row"
+          },
+          {
+            "type": "banner_header"
+          },
+          {
+            "type": "body_text"
+          },
+          {
+            "type": "cta"
+          }
+        ]
       }
     ]
   }

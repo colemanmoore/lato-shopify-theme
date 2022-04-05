@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "1649120281ca371321": {
+      "type": "page-title",
+      "settings": {
+        "text": "Our Story"
+      }
+    },
+    "top-banner": {
+      "type": "about-us-banner",
+      "blocks": {
+        "1102b124-5859-4baa-9351-24d8b0b5928a": {
+          "type": "icon_row",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Asset_2.png"
+          }
+        },
+        "768d8d60-1b5d-4ef4-a68d-78d3b60ed252": {
+          "type": "banner_header",
+          "settings": {
+            "text": "Rethinking hiking wear",
+            "style": "sans_serif"
+          }
+        },
+        "6b67bfbb-9d64-4d7b-bb17-3118f6c4e8dd": {
+          "type": "body_text",
+          "settings": {
+            "text": "<p>From backyard adventures to the day trips you've been daydreaming of, Lato is your answer to sustainably made hiking clothes that blend form and functionality.<br\/><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1102b124-5859-4baa-9351-24d8b0b5928a",
+        "768d8d60-1b5d-4ef4-a68d-78d3b60ed252",
+        "6b67bfbb-9d64-4d7b-bb17-3118f6c4e8dd"
+      ],
+      "settings": {
+      }
+    },
+    "1649109875376fae03": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Asset_16.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true,
+        "has_email_input": false,
+        "compensate_for_header": false
+      }
+    },
+    "1649110317fcd6409a": {
+      "type": "rich-text",
+      "blocks": {
+        "16491103179b264150-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "About Our Brand",
+            "heading_size": "h2"
+          }
+        },
+        "16491103179b264150-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The name “Lato” [lah-toe] comes from the Polish word meaning summertime. It’s there and then that we first fell in love with spending time outdoors, hiking through vast forests, and truly enjoying what was in our own backyard. The excitement and curiosity that comes alive during the summer months is what inspired us to create Lato. And it’s what led us to recognizing that the most essential exploration you can do is to look within and learn to find joy in what’s around you.<br\/><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "16491103179b264150-0",
+        "16491103179b264150-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "heading_style": "nav"
+      }
+    }
+  },
+  "order": [
+    "1649120281ca371321",
+    "top-banner",
+    "1649109875376fae03",
+    "1649110317fcd6409a"
+  ]
+}

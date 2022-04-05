@@ -1,18 +1,14 @@
 .about-us-banner {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    padding: 2em;
+    grid-template-columns: 1fr 2fr 1fr;
+    /* padding: 2em; */
+    margin-top: 5rem;
+  margin-bottom: 5rem;
 }
 
 .about-us-banner > * {
     margin: 1.5rem 0;
     text-align: center;
-}
-
-@media screen and (min-width: 990px) {
-    .about-us-banner > * {
-        margin: 3rem 0;
-    }
 }
 
 .about-us-icon {
@@ -24,13 +20,22 @@
     grid-row: 2;
     grid-column: 2;
     font-family: var(--font-nav-family);
-    text-transform: uppercase;
 }
 
 .about-us-body {
     grid-row: 3;
-    grid-column: 2/3;
+    grid-column: 1/4;
     font-size: 2.25rem;
+}
+
+@media screen and (min-width: 750px) {
+    .about-us-body {
+        grid-column: 2/3;
+    }
+}
+
+.about-us-body p {
+    margin: 0;
 }
 
 .about-us-cta {

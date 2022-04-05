@@ -1,0 +1,38 @@
+{%- style -%}
+
+  #shopify-section-{{ section.id }} .page-title {
+    text-transform: uppercase;
+    font-family: var(--font-heading-family);
+    font-size: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    margin-top: 6rem;
+    margin-bottom: 0;
+  }
+
+{%- endstyle -%}
+
+<div class="page-width">
+  <h2 class="page-title">{{ section.settings.text }}</h2>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.page-title.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "t:sections.page-title.settings.text.label",
+      "default": "Page title"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.page-title.presets.name"
+    }
+  ]
+}
+{% endschema %}

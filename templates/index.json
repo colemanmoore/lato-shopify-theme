@@ -46,17 +46,47 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false,
-        "has_email_input": false
+        "has_email_input": false,
+        "compensate_for_header": true
       }
     },
     "about_us_banner": {
       "type": "about-us-banner",
+      "blocks": {
+        "885313e8-1273-44c2-b83b-0273cd449454": {
+          "type": "icon_row",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Asset_2.png"
+          }
+        },
+        "7725bc24-a68d-4b83-abd1-a6a4f5d9014f": {
+          "type": "banner_header",
+          "settings": {
+            "text": "Just add fresh air",
+            "style": "nav"
+          }
+        },
+        "fbff92af-0825-4f77-962f-443a1ce30272": {
+          "type": "body_text",
+          "settings": {
+            "text": "<p>From backyard adventures to the day trips you’ve been daydreaming of, Lato is your answer to sustainably made hiking clothes that blend form and functionality.<br\/><\/p>"
+          }
+        },
+        "80888adf-d61c-405a-b54e-fae0af61632b": {
+          "type": "cta",
+          "settings": {
+            "cta_destination": "our-story-1",
+            "cta_text": "About Us"
+          }
+        }
+      },
+      "block_order": [
+        "885313e8-1273-44c2-b83b-0273cd449454",
+        "7725bc24-a68d-4b83-abd1-a6a4f5d9014f",
+        "fbff92af-0825-4f77-962f-443a1ce30272",
+        "80888adf-d61c-405a-b54e-fae0af61632b"
+      ],
       "settings": {
-        "icon": "shopify:\/\/shop_images\/Asset_2.png",
-        "heading": "Just add fresh air",
-        "body": "From backyard adventures to the day trips you've been daydreaming of, Lato is your answer to sustainably-made hiking clothes that blend form and functionality.",
-        "cta_destination": "",
-        "cta_text": "About Us"
       }
     },
     "top_collections": {
@@ -149,7 +179,8 @@
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false,
-        "has_email_input": true
+        "has_email_input": true,
+        "compensate_for_header": false
       }
     },
     "hike_guides": {
