@@ -1,13 +1,80 @@
 {
   "sections": {
+    "1649135832dcc8a902": {
+      "type": "page-title",
+      "settings": {
+        "text": "FAQ"
+      }
+    },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
-        "template_style": "faq"
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "1649136040d4bf0845": {
+      "type": "collapsible-content",
+      "blocks": {
+        "1649136040841da4e7-1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is everything you make eco-friendly?",
+            "row_content": "<p>We believe spending time outdoors makes everything better. Because we’re big fans of the<br\/>earth and all that it has to share with us, being eco-friendly is at the top of our priorities. Below is some info on the materials we use for various products:<\/p><p><br\/><strong>Packaging<\/strong><\/p><p>We use a certified home compostable alternative to a traditional poly bag. These come from a company called Better Packaging. Our mailers are made from 100% recycled content, 50% post-consumer content and come from a company called EcoEnclose.<br\/><\/p><p><strong>Hangtags<\/strong><\/p><p>We work with a company to print our materials with safe, eco-friendly dyes, and always use recycled paper.<\/p><p><\/p><p><strong>Materials<\/strong><\/p><p><strong>Ripstop<\/strong><\/p><p>Our ripstop is made of 86% recycled polyester (RPET) and 14% spandex.<\/p><p><strong>Jersey\/Compression<\/strong><\/p><p>Our jersey is made of 87% recycled polyester (RPET) and 13% spandex.<\/p><p><strong>Spandex<\/strong><\/p><p>We’re looking into using recycled spandex in the near future as well. Our materials are Bluesign certified, which you can read more about here.<br\/><\/p>",
+            "page": ""
+          }
+        },
+        "1649136040841da4e7-0": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Where do you manufacture?",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "1649136040841da4e7-2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "1649136040841da4e7-3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "row_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "1649136040841da4e7-1",
+        "1649136040841da4e7-0",
+        "1649136040841da4e7-2",
+        "1649136040841da4e7-3"
+      ],
+      "settings": {
+        "caption": "",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "background-1",
+        "container_color_scheme": "background-2",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
-    "main"
+    "1649135832dcc8a902",
+    "main",
+    "1649136040d4bf0845"
   ]
 }
