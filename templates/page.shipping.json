@@ -2,12 +2,142 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
-        "template_style": "shipping"
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "16491338824a04a559": {
+      "type": "page-title",
+      "settings": {
+        "text": "Shipping"
+      }
+    },
+    "1649133910b54e3033": {
+      "type": "rich-text",
+      "blocks": {
+        "1649133910382586e6-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Shipments are sent from Los Angeles, California. We aim to get orders out as quickly as possible, shipping Monday through Friday. Once an order ships, an update is automatically sent to the email on file.<br\/><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1649133910382586e6-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_alignment": "left"
+      }
+    },
+    "1649133949e332786a": {
+      "type": "rich-text",
+      "blocks": {
+        "1649133949e1c416f2-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lato is unfortunately not responsible for lost or damaged packages. Please consider the security of your delivery address before placing your order. If your package has been lost or damaged, please contact the mail carrier.<br\/><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1649133949e1c416f2-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_alignment": "left"
+      }
+    },
+    "1649133986f08ad0dc": {
+      "type": "rich-text",
+      "blocks": {
+        "16491339864a6cde73-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Have questions about shipping?<\/strong><\/p><p><strong>Drop us a line at: info@lato.life<\/strong><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "16491339864a6cde73-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_alignment": "left"
+      }
+    },
+    "164913404448a83f1f": {
+      "type": "page-title",
+      "settings": {
+        "text": "Exchanges"
+      }
+    },
+    "164913408235b70a99": {
+      "type": "rich-text",
+      "blocks": {
+        "164913408257b6d886-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>As a small, independently owned business we can only accept exchanges & offer store credit. We do not offer refunds at this time. Items you wish to exchange must be sent back within 14 days of receipt. To be eligible for an exchange, items must be unworn, unwashed. and with their original tags.<br\/><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "164913408257b6d886-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_alignment": "left"
+      }
+    },
+    "16491347610b9582d2": {
+      "type": "rich-text",
+      "blocks": {
+        "16491347616edec81e-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>You will be responsible for paying for your own shipping costs for exchanging your item. Shipping costs are non-refundable but we will happily ship the exchange to you at no charge. Depending on stock quantities, etc., the time it takes for your exchanged product to reach you may vary.<br\/><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "16491347616edec81e-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_alignment": "left"
+      }
+    },
+    "16491348030151c752": {
+      "type": "rich-text",
+      "blocks": {
+        "1649134803ec3a90da-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Please consider trackable shipping services or purchase shipping insurance if your order is over $75. We cannot guarantee that we will receive your exchanged item.<br\/><\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1649134803ec3a90da-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "text_alignment": "left"
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "16491338824a04a559",
+    "1649133910b54e3033",
+    "1649133949e332786a",
+    "1649133986f08ad0dc",
+    "164913404448a83f1f",
+    "164913408235b70a99",
+    "16491347610b9582d2",
+    "16491348030151c752"
   ]
 }
