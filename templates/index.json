@@ -110,9 +110,7 @@
         "f4e1b7cf-e86c-425d-89a0-e9370ac96d7c"
       ],
       "settings": {
-        "show_view_all": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "light_link_color": true
       }
     },
     "featured_product": {
