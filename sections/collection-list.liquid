@@ -2,45 +2,29 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+  {% for block in section.blocks %}
+    #Card-{{ forloop.index0 }} {
+      background-image: url('{{ block.settings.collection.featured_image | image_url: width: 600 }}');
     }
-  }
+  {% endfor %}
 {%- endstyle -%}
 
 <div class="gradient">
-  <div class="collection-list-wrapper page-width isolate no-heading{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} no-mobile-link{% endif %} section-{{ section.id }}-padding">
+  <div class="collection-list-wrapper isolate no-heading{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} no-mobile-link{% endif %} section-{{ section.id }}-padding">
   
     <div class="collection-list collection-list--{{ section.blocks.size }}-items" role="list">
-      {%- liquid
-        assign columns = section.blocks.size
-        if columns > 2
-          assign columns = 2
-        endif
-        assign image_width = settings.page_width | divided_by: columns | minus: 50
-      -%}
       {%- for block in section.blocks -%}
         {%- assign card_collection = block.settings.collection -%}
-        <div class="collection-list__item" {{ block.shopify_attributes }}>
-          <div class="collection-list__item-wrapper">
-            <img
-              src="{{ card_collection.featured_image | image_url: width: image_width }}"
-              alt="{{ card_collection.title | escape }}"
-              height="{{ image_width }}"
-              width="{{ image_width }}"
-              loading="lazy"
-              class="motion-reduce"
-            />
-            <div>Shop {{ card_collection.title }}</div>
+        <a href="{{ card_collection.url }}" id="Card-{{ forloop.index0 }}" 
+          class="collection-list__item link"
+          role="img" aria-label="{{ card_collection.title | escape }}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="collection-list__item-wrapper{% if section.settings.light_link_color %} light_card_link{% endif %}">
+            <span class="card--text">{{ card_collection.title }}</span>
+            {%- render 'icon-arrow' %}
           </div>
-        </div>
+        </a>
       {%- endfor -%}
     </div>
   
@@ -61,39 +45,16 @@
   "settings": [
     {
       "type": "checkbox",
-      "id": "show_view_all",
-      "default": false,
-      "label": "t:sections.collection-list.settings.show_view_all.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "id": "light_link_color",
+      "label": "Light color link",
+      "default": true
     }
   ],
   "blocks": [
     {
       "type": "featured_collection",
       "name": "t:sections.collection-list.blocks.featured_collection.name",
+      "limit": 2,
       "settings": [
         {
           "type": "collection",

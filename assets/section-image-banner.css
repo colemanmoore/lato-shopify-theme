@@ -314,6 +314,7 @@
   width: 100%;
   word-wrap: break-word;
   z-index: 1;
+  font-size: 22px;
 }
 
 @media screen and (min-width: 750px) {
@@ -336,6 +337,10 @@
 
   .banner--desktop-transparent .content-container:after {
     display: none;
+  }
+
+  .banner__box {
+    font-size: 36px;
   }
 }
 
@@ -360,13 +365,14 @@
 
 .banner__box > * + .banner__text {
   margin-top: 1.5rem;
-  font-size: 2.5rem;
+  font-size: 1em;
   line-height: 3rem;
 }
 
 @media screen and (min-width: 750px) {
   .banner__box > * + .banner__text {
     margin-top: 2rem;
+    font-size: 0.75em;
   }
 }
 
@@ -404,7 +410,7 @@
   font-stretch: 50%;
   margin-bottom: 0;
   text-transform: uppercase;
-  font-size: 6rem;
+  font-size: 2em;
   line-height: 7rem;
 }
 
